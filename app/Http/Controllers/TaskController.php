@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Task; // Task Model
+
 class TaskController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Task::all());
     }
 
     /**
@@ -25,7 +27,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('welcome');
     }
 
     /**
@@ -36,7 +38,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->only(['name', 'data']);
+        $task = new Task;
+        $task->name = $input['name'];
+        $task->data = $input['data'];
+        $task->save();
+        return response()->json($task);
     }
 
     /**
@@ -47,7 +54,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(Task::findOrFail($id));
     }
 
     /**
@@ -58,7 +65,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('welcome', ['task' => Task::findOrFail($id)]);
     }
 
     /**
@@ -70,7 +77,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->only(['name', 'data']);
+        $task = Task::findOrFail($id);
+        $task->name = $input['name'];
+        $task->data = $input['data'];
+        $task->save();
+        return response()->json($task);
     }
 
     /**
@@ -81,6 +93,8 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return response()->json($task);
     }
 }
