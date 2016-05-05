@@ -1,3 +1,6 @@
+# Laravel REST Tutorial
+This repository is means to be accomponied with [this post](https://slack-files.com/T03L9LRC0-F169NDXEV-8bde7fc7fc) on Swin iCity, the official Swinburne Sarawak ICT Club Slack.
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
