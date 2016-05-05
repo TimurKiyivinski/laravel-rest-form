@@ -101,10 +101,6 @@
         $('#tasks_well').append(task_panel)
     }
 
-    // Remove a task to the task well
-    let removeTask = function() {
-    }
-
     // Get all tasks as a list
     let getTasks = function() {
         let url = $('#tasks_well').data('url')
